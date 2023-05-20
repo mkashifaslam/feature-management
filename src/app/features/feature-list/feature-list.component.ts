@@ -69,7 +69,6 @@ export class FeatureListComponent {
   }
 
   selectedOption(event: any) {
-    console.log('Event Result: ', event);
     this.isShowDialog = false;
     if (event) {
       this.deleteFeature();
