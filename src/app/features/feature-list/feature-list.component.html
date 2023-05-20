@@ -1,19 +1,17 @@
 <div class="max-w-lg mx-auto">
   <div class="bg-white shadow-lg rounded-lg p-6">
 
-    <div class="flex justify-between">
-      <div class="w-60">
+    <div class="flex items-center">
+      <div class="flex-1">
         <h2 class="text-xl font-bold mb-4">Features</h2>
       </div>
-      <div class="w-30">
-        <!-- Toggle Add Feature Form Button -->
-        <button (click)="toggleAddFeatureForm($event)" [hidden]="isShowForm"
-                class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-400">Add
-          Feature
-        </button>
-      </div>
+      <!-- Toggle Add Feature Form Button -->
+      <button (click)="toggleAddFeatureForm($event)" [hidden]="isShowForm"
+              class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-400">Add
+        Feature
+      </button>
     </div>
-    
+
     <!-- Toggle Show/Hide Feature Form -->
     <app-feature-form (featureAdded)="addFeature($event)" (toggleForm)="toggleAddFeatureForm($event)"
                       [hidden]="!isShowForm"/>
