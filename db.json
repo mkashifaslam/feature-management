@@ -3,22 +3,22 @@
     {
       "id": 1,
       "name": "Feature 1",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": 2,
       "name": "Feature 2",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": 3,
       "name": "Feature 3",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": 4,
       "name": "Feature 4",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": 5,

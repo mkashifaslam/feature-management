@@ -16,11 +16,15 @@ export class FeatureService {
     return this.http.get<Feature[]>(this.apiUrl);
   }
 
-  updateFeature(feature: Feature): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${feature.id}`, feature);
+  updateFeature(feature: Feature): Observable<Feature> {
+    return this.http.put<Feature>(`${this.apiUrl}/${feature.id}`, feature);
   }
 
-  addFeature(newFeature: Feature): Observable<any> {
-    return this.http.post(this.apiUrl, newFeature);
+  addFeature(newFeature: Feature): Observable<Feature> {
+    return this.http.post<Feature>(this.apiUrl, newFeature);
+  }
+
+  deleteFeature(feature: Feature) {
+    return this.http.delete<boolean>(`${this.apiUrl}/${feature.id}`);
   }
 }

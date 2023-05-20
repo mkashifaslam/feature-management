@@ -4,11 +4,12 @@ import {FeatureFormComponent} from "../feature-form/feature-form.component";
 import {FeatureService} from "../feature.service";
 import {Feature} from "../feature";
 import {FormsModule} from "@angular/forms";
+import {DialogComponent} from "../../dialog/dialog.component";
 
 @Component({
   selector: 'app-feature-list',
   standalone: true,
-  imports: [CommonModule, FeatureFormComponent, FormsModule],
+  imports: [CommonModule, FeatureFormComponent, FormsModule, DialogComponent],
   providers: [FeatureService],
   templateUrl: './feature-list.component.html',
   styleUrls: ['./feature-list.component.css']
@@ -16,9 +17,13 @@ import {FormsModule} from "@angular/forms";
 export class FeatureListComponent {
   features!: Feature[];
   filteredFeatures: Feature[] = [];
+  selectedFeature: Feature | null = null;
   searchQuery: string = '';
   isShowForm: boolean = false;
+  isShowDialog: boolean = false;
   loading: boolean = true;
+  dialogTitle: string = 'Confirm Action';
+  dialogMessage: string = 'Are you sure you want to perform this action?';
 
   constructor(private featureService: FeatureService) {
   }
@@ -46,6 +51,31 @@ export class FeatureListComponent {
     });
   }
 
+  deleteFeature() {
+    this.featureService.deleteFeature(this.selectedFeature as Feature)
+      .subscribe(() => {
+        this.selectedFeature = null;
+        this.fetchFeatures();
+      });
+  }
+
+  showDeleteDialog(feature: Feature) {
+    this.selectedFeature = feature;
+    const featureName = this.selectedFeature.name;
+    const dialogTitle = 'Delete Action!';
+    const dialogMessage = `Please confirm if you want to delete "${featureName}"?`;
+    this.setDialogContext(dialogTitle, dialogMessage);
+    this.isShowDialog = true;
+  }
+
+  selectedOption(event: any) {
+    console.log('Event Result: ', event);
+    this.isShowDialog = false;
+    if (event) {
+      this.deleteFeature();
+    }
+  }
+
   public filterFeatures(): void {
     // Filter features based on the search query
     this.filteredFeatures = this.features.filter(feature =>
@@ -56,5 +86,10 @@ export class FeatureListComponent {
 
   toggleAddFeatureForm(event: any) {
     this.isShowForm = !this.isShowForm;
+  }
+
+  setDialogContext(title: string, message: string) {
+    this.dialogTitle = title;
+    this.dialogMessage = message;
   }
 }

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FeatureListComponent} from "./features/feature-list/feature-list.component";
 import {Title} from "@angular/platform-browser";
 import {HeaderComponent} from "./features/header/header.component";
+import {DialogComponent} from "./dialog/dialog.component";
 
 @Component({
   standalone: true,
@@ -9,7 +10,8 @@ import {HeaderComponent} from "./features/header/header.component";
   templateUrl: './app.component.html',
   imports: [
     FeatureListComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogComponent
   ],
   styleUrls: ['./app.component.css']
 })

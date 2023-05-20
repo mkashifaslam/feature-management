@@ -60,9 +60,22 @@
                   class="px-3 py-2 text-sm bg-red-500 text-white rounded-md hover:bg-red-400" *ngIf="feature.enabled">
             Disable
           </button>
+          <button (click)="showDeleteDialog(feature)"
+                  class="flex items-center justify-center px-4 py-2 ml-2 text-white bg-red-500 hover:bg-red-600 rounded-md focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                 class="w-4 h-4 mr-2">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Delete
+          </button>
         </div>
       </li>
     </ul>
   </div>
 </div>
-
+<app-dialog
+  [title]="dialogTitle"
+  [message]="dialogMessage"
+  (OnSelectedOption)="selectedOption($event)"
+  *ngIf="isShowDialog"
+/>
