@@ -14,6 +14,16 @@
       "id": 3,
       "name": "Feature 3",
       "enabled": true
+    },
+    {
+      "id": 4,
+      "name": "Feature 4",
+      "enabled": false
+    },
+    {
+      "id": 5,
+      "name": "Feature 5",
+      "enabled": false
     }
   ]
 }

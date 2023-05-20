@@ -1,13 +1,15 @@
 import {Component} from '@angular/core';
 import {FeatureListComponent} from "./features/feature-list/feature-list.component";
 import {Title} from "@angular/platform-browser";
+import {HeaderComponent} from "./features/header/header.component";
 
 @Component({
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [
-    FeatureListComponent
+    FeatureListComponent,
+    HeaderComponent
   ],
   styleUrls: ['./app.component.css']
 })

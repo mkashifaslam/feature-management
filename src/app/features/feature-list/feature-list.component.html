@@ -6,9 +6,13 @@
         <h2 class="text-xl font-bold mb-4">Features</h2>
       </div>
       <!-- Toggle Add Feature Form Button -->
-      <button (click)="toggleAddFeatureForm($event)" [hidden]="isShowForm"
-              class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-400">Add
-        Feature
+      <button (click)="toggleAddFeatureForm($event)" *ngIf="!isShowForm"
+              class="flex items-center justify-center px-4 py-2 font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-md focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+             class="w-4 h-4 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        Add Feature
       </button>
     </div>
 
@@ -20,8 +24,30 @@
       Loading...
     </div>
 
+    <div class="relative my-3">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery" (ngModelChange)="filterFeatures()"
+        class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Search"
+      >
+      <svg
+        class="absolute top-2 left-3 h-5 w-5 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 20h4M21 21l-5-5M4 21l5-5M12 4v4m0 0l-2 2m2-2l2-2"
+        ></path>
+      </svg>
+    </div>
+
     <ul class="divide-y divide-gray-200" *ngIf="!loading">
-      <li *ngFor="let feature of features" class="py-4">
+      <li *ngFor="let feature of filteredFeatures" class="py-4">
         <div class="flex items-center">
           <div class="flex-1">
             <h3 class="text-lg font-medium text-gray-900">{{ feature.name }}</h3>
