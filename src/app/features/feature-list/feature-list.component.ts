@@ -46,6 +46,7 @@ export class FeatureListComponent {
   }
 
   addFeature(newFeature: Feature) {
+    delete newFeature.id;
     this.featureService.addFeature(newFeature).subscribe(() => {
       this.fetchFeatures();
     });

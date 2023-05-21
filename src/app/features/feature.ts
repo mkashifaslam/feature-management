@@ -1,5 +1,5 @@
 export interface Feature {
-  id: number;
+  id?: number;
   name: string;
   enabled: boolean;
 }

@@ -7,7 +7,7 @@ import {Feature} from './feature';
   providedIn: 'root'
 })
 export class FeatureService {
-  private apiUrl = 'http://localhost:3000/features'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:3000/api/v1/features'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) {
   }
@@ -17,7 +17,7 @@ export class FeatureService {
   }
 
   updateFeature(feature: Feature): Observable<Feature> {
-    return this.http.put<Feature>(`${this.apiUrl}/${feature.id}`, feature);
+    return this.http.patch<Feature>(`${this.apiUrl}/${feature.id}`, feature);
   }
 
   addFeature(newFeature: Feature): Observable<Feature> {
