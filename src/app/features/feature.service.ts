@@ -2,12 +2,13 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Feature} from './feature';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeatureService {
-  private apiUrl = 'http://localhost:3000/api/v1/features'; // Replace with your API endpoint
+  private apiUrl = `${environment.API_URL}/api/v1/features`;
 
   constructor(private http: HttpClient) {
   }
